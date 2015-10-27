@@ -34,7 +34,6 @@ src_install() {
 	fperms a+x /opt/${PN}/bin/fsnotifier64 || die "Chmod failed"
 	dosym /opt/${PN}/bin/0xdbe.sh /usr/bin/${PN}
 	
-	mv "bin/0xdbe.png" "bin/${PN}.png"
 	doicon "bin/${PN}.png"
 	make_desktop_entry ${PN} "${PROGNAME}" "${PN}"
 }
