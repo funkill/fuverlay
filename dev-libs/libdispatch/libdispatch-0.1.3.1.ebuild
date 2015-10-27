@@ -24,7 +24,8 @@ DEPEND=">=sys-devel/clang-3.4
 
 RDEPEND="${DEPEND}
 	dev-libs/libpthread_workqueue[${MULTILIB_USEDEP}]
-	dev-libs/libkqueue[${MULTILIB_USEDEP}]"
+	dev-libs/libkqueue[${MULTILIB_USEDEP}]
+	dev-libs/libblocksruntime"
 
 src_configure() {
 	export CC=clang
