@@ -31,7 +31,7 @@ src_install() {
 	fperms a+x /opt/${PN}/bin/fsnotifier64 || die "Chmod failed"
 	dosym /opt/${PN}/bin/datagrip.sh /usr/bin/${PN}
 	
-	newicon "bin/product.png" datagrip.png
+	newicon "bin/product.png" DataGrip.png
 	make_desktop_entry ${PN} "${PROGNAME}" "${PN}"
 }
 
