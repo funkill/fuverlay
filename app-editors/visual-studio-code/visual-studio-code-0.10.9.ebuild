@@ -6,10 +6,13 @@ EAPI=5
 
 inherit eutils
 
+HASH_VERSION="db71ac615ddf9f33b133ff2536f5d33a77d4774e"
+
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
 SRC_URI="
-	amd64? ( https://az764295.vo.msecnd.net/public/${PV}/VSCode-linux64.zip -> VSCode-linux-${PV}-x64.zip )
+	amd64? ( https://az764295.vo.msecnd.net/stable/${HASH_VERSION}/VSCode-linux-x64-stable.zip -> VSCode-linux-${PV}-x64.zip )
+	x86? ( https://az764295.vo.msecnd.net/stable/${HASH_VERSION}/VSCode-linux-ia32-stable.zip -> VSCode-linux-${PV}-ia32.zip )
 "
 
 LICENSE="Microsoft"
