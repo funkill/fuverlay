@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils
 
-HASH_VERSION="db71ac615ddf9f33b133ff2536f5d33a77d4774e"
+HASH_VERSION="5b5f4db87c10345b9d5c8d0bed745bcad4533135"
 
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
@@ -42,12 +42,12 @@ pkg_pretend() {
 src_install() {
 	insinto "/opt/${PN}"
 	doins -r *
-	dosym "/opt/${PN}/Code" "/usr/bin/visual-studio-code"
+	dosym "/opt/${PN}/code" "/usr/bin/visual-studio-code"
 	insinto "/usr/share/applications"
 	doins ${FILESDIR}/${PN}.desktop
 	insinto "/usr/share/pixmaps"
 	doins ${FILESDIR}/${PN}.png
-	fperms +x "/opt/${PN}/Code"
+	fperms +x "/opt/${PN}/code"
 }
 
 pkg_postinst() {
