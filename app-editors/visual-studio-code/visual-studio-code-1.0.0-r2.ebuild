@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -6,26 +6,34 @@ EAPI=5
 
 inherit eutils
 
-HASH_VERSION="5b5f4db87c10345b9d5c8d0bed745bcad4533135"
+HASH_VERSION="fa6d0f03813dfb9df4589c30121e9fcffa8a8ec8"
+RELEASE_CHANNEL="stable"
+BINARY_SUFFIX=""
 
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
 SRC_URI="
-	amd64? ( https://az764295.vo.msecnd.net/stable/${HASH_VERSION}/VSCode-linux-x64-stable.zip -> VSCode-linux-${PV}-x64.zip )
-	x86? ( https://az764295.vo.msecnd.net/stable/${HASH_VERSION}/VSCode-linux-ia32-stable.zip -> VSCode-linux-${PV}-ia32.zip )
+	amd64? ( https://az764295.vo.msecnd.net/${RELEASE_CHANNEL}/${HASH_VERSION}/VSCode-linux-x64-${RELEASE_CHANNEL}.zip -> VSCode-linux-${PV}-x64.zip )
+	x86? ( https://az764295.vo.msecnd.net/${RELEASE_CHANNEL}/${HASH_VERSION}/VSCode-linux-ia32-${RELEASE_CHANNEL}.zip -> VSCode-linux-${PV}-ia32.zip )
 "
 
 LICENSE="Microsoft"
-SLOT="0"
+SLOT=${RELEASE_CHANNEL}
 KEYWORDS="x86 amd64"
 IUSE=""
+
+RESTRICT="strip mirror"
+
+QA_PREBUILT="opt/${PN}-${SLOT}/code${BINARY_PREFIX}"
 
 DEPEND="
 	>=media-libs/libpng-1.2.46
 	>=x11-libs/gtk+-2.24.8-r1:2
 	gnome-base/gconf
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	net-print/cups
+"
 
 S="${WORKDIR}/VSCode-linux-x64"
 
@@ -40,14 +48,14 @@ pkg_pretend() {
 }
 
 src_install() {
-	insinto "/opt/${PN}"
+	insinto "/opt/${PN}-${SLOT}"
 	doins -r *
-	dosym "/opt/${PN}/code" "/usr/bin/visual-studio-code"
+	dosym "/opt/${PN}-${SLOT}/code${BINARY_SUFFIX}" "/usr/bin/visual-studio-code${BINARY_SUFFIX}"
 	insinto "/usr/share/applications"
-	doins ${FILESDIR}/${PN}.desktop
+	doins ${FILESDIR}/${PN}-${SLOT}.desktop
 	insinto "/usr/share/pixmaps"
-	doins ${FILESDIR}/${PN}.png
-	fperms +x "/opt/${PN}/code"
+	doins ${FILESDIR}/${PN}-${SLOT}.png
+	fperms +x "/opt/${PN}-${SLOT}/code${BINARY_SUFFIX}"
 }
 
 pkg_postinst() {

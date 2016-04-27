@@ -18,7 +18,7 @@ SRC_URI="
 "
 
 LICENSE="Microsoft"
-SLOT="0"
+SLOT=${RELEASE_CHANNEL}
 KEYWORDS="~x86 ~amd64"
 IUSE=""
 

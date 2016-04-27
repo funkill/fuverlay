@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -18,7 +18,7 @@ SRC_URI="
 "
 
 LICENSE="Microsoft"
-SLOT="0"
+SLOT=${RELEASE_CHANNEL}
 KEYWORDS="~x86 ~amd64"
 IUSE=""
 
