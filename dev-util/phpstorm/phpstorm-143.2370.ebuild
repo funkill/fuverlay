@@ -1,12 +1,11 @@
-EAPI=4
+EAPI=6
 inherit eutils
-#PVERSION='9.0.2'
-EAP='-EAP'
-#EAP="-6-Preview"
+PVERSION="10.0.4"
+#EAP="-EAP"
 
 HOMEPAGE="http://www.jetbrains.com/phpstorm/"
 DESCRIPTION="PhpStorm"
-SRC_URI="http://download.jetbrains.com/webide/PhpStorm${EAP}-${PVERSION:-${PV}}-custom-jdk-linux.tar.gz"
+SRC_URI="http://download.jetbrains.com/webide/PhpStorm${EAP}-${PVERSION:-${PV}}.tar.gz -> ${P}.tar.gz"
 
 if [[ x${PVERSION} != 'x' ]]; then
 	KEYWORDS="x86 amd64"
@@ -18,7 +17,7 @@ PROGNAME="PHP Storm"
 
 RESTRICT="strip mirror"
 
-QA_WX_LOAD="
+QA_PREBUILT="
     opt/${PN}/bin/fsnotifier-arm
 "
 
@@ -38,7 +37,7 @@ src_install() {
 	fperms a+x /opt/${PN}/bin/fsnotifier || die "Chmod failed"
 	fperms a+x /opt/${PN}/bin/fsnotifier64 || die "Chmod failed"
 	dosym /opt/${PN}/bin/phpstorm.sh /usr/bin/${PN}
-	
+
 	mv "bin/webide.png" "bin/${PN}.png"
 	doicon "bin/${PN}.png"
 	make_desktop_entry ${PN} "${PROGNAME}" "${PN}"
