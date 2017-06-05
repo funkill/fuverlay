@@ -19,19 +19,19 @@ DEPEND="sys-devel/clang"
 RDEPEND="${DEPEND}"
 
 src_configure() {
-        export CC=clang
-        export CXX=clang++
+    export CC=clang
+    export CXX=clang++
 
-       	append-flags -fblocks
+    append-flags -fblocks
 
-       	local mycmakeargs="-DDISPATCH_INCLUDE_DIR=include"
-        cmake-multilib_src_configure
+    local mycmakeargs="-DDISPATCH_INCLUDE_DIR=include"
+    cmake-multilib_src_configure
 }
 
 src_install() {
-        cmake-multilib_src_install
+    cmake-multilib_src_install
 
-        #insinto /usr/include/dispatch
-        #doins "${FILESDIR}/dispatch.h"
-        #dosym dispatch/dispatch.h /usr/include/dispatch/dispatch.h
+    #insinto /usr/include/dispatch
+    #doins "${FILESDIR}/dispatch.h"
+    #dosym dispatch/dispatch.h /usr/include/dispatch/dispatch.h
 }
