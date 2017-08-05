@@ -8,16 +8,18 @@ PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 DOCS="CHANGES LICENSE README"
 
-USE_PHP="php5-6"
+USE_PHP="php7-0 php7-1"
 
 inherit php-ext-pecl-r3
 
 KEYWORDS="~amd64 ~x86"
 
+VER_POSTFIX="-PHP7"
+
 DESCRIPTION="fast and powerfull template engine for very big internet projects"
 HOMEPAGE="http://alexeyrybak.com/blitz/blitz_en.html"
 
-SRC_URI="https://github.com/alexeyrybak/${PHP_EXT_NAME}/archive/v${PV}.tar.gz -> ${PHP_EXT_NAME}-${PV}.tar.gz"
+SRC_URI="https://github.com/alexeyrybak/${PHP_EXT_NAME}/archive/${PV}${VER_POSTFIX}.tar.gz -> ${PHP_EXT_NAME}-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -25,3 +27,7 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/${PHP_EXT_NAME}-${PV}${VER_POSTFIX}"
+PHP_EXT_S="${S}"
+
