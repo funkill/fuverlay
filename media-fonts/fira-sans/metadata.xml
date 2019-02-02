@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>fonts</herd>
+	<maintainer type="person">
+		<email>funkill2@gmail.com</email>
+	</maintainer>
 </pkgmetadata>
